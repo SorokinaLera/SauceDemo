@@ -42,7 +42,7 @@ public class NewTest {
 //        driver.findElement(By.cssSelector(".btn_primary.btn_inventory"));//добавить товар в корзину из карточки товара
 //        driver.findElement(By.cssSelector(".btn_secondary.btn_inventory"));//удалить товар из корзины
 
-//       driver.navigate().back();
+//        driver.navigate().back();
 //        driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(4);//добавить товар в корзину(здесь что-то не так)
 
 //        driver.findElement(By.cssSelector(".product_sort_container"));//сортировка
@@ -66,7 +66,6 @@ public class NewTest {
         driver.get("https://www.saucedemo.com/checkout-complete.html");
 
         Assert.assertEquals("THANK YOU FOR YOUR ORDER", driver.findElement(By.cssSelector(".complete-header")).getText());
-
 
     }
 

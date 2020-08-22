@@ -18,7 +18,7 @@ By.cssSelector(".inventory_item_img")//зайти в карточку товар
 By.cssSelector(".btn_primary.btn_inventory")//добавить товар в корзину
 By.cssSelector(".btn_secondary.btn_inventory")//удалить товар из корзины из карточки товара
 
-driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(4);//добавить товар в корзину(здесь что-то не так)
+(By.xpath("//button[text()='ADD TO CART']")).get(4);//добавить товар в корзину(здесь что-то не так)
 driver.findElement(By.cssSelector(".product_sort_container"));//сортировка
 driver.findElement(By.cssSelector("[fill=currentColor]"));//в корзину
 driver.findElement(By.cssSelector("[data-prefix=fas]"));//в корзину
