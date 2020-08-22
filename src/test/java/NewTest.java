@@ -36,7 +36,7 @@ public class NewTest {
     @Test
     public void TestFindLocators() {
 
-//driver.get("https://www.saucedemo.com/inventory.html");
+//        driver.get("https://www.saucedemo.com/inventory.html");
 //
 //        driver.findElement(By.cssSelector(".inventory_item_img")).click();//зайти в карточку товара
 //        driver.findElement(By.cssSelector(".btn_primary.btn_inventory"));//добавить товар в корзину из карточки товара
