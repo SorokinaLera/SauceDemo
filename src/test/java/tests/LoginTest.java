@@ -3,10 +3,12 @@ import org.testng.Assert;
 
 public class LoginTest extends BaseTest {
 
-    @org.testng.annotations.Test
+    @org.testng.annotations.Test(invocationCount = 5) //5раз запускает тест
     public void loginTest() {
         loginPage.openPage();
         loginPage.login(USERNAME, PASSWORD);
+        //Assert.assertEquals(productsPage.isPageOpened(),true);
+        Assert.assertTrue(productsPage.isPageOpened());
 
     }
 
@@ -15,6 +17,7 @@ public class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(USERNAME, "");
         Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Password is required");
+
 
     }
 
