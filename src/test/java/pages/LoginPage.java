@@ -15,15 +15,29 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void openPage() {
-        driver.get("https://www.saucedemo.com/index.html");
+    @Override
+    public LoginPage isPageOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
+        return this;
     }
 
-    public void login(String username, String password) {
+    public LoginPage openPage() {
+        driver.get("https://www.saucedemo.com/index.html");
+        isPageOpened();
+        return this;
+    }
+
+    public ProductsPage login(String username, String password) {
+        loginWithoutRedirect(username, password);
+        return new ProductsPage(driver);
+
+    }
+
+    public LoginPage loginWithoutRedirect(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        return this;
 
     }
 

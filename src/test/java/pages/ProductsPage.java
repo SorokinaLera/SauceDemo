@@ -21,8 +21,13 @@ public class ProductsPage extends BasePage {
 
     //два способа валидации, что страница открылась
     //NoSuchElementException спустя 20 сек
-    public boolean isPageOpened() {
-        return driver.findElement(SORTING_BUTTON).isDisplayed();
+    public ProductsPage isPageOpened() {
+        Assert.assertTrue(driver.findElement(SORTING_BUTTON).isDisplayed());
+        return this;
+    }
+
+    protected CartPage openPage() {
+        return null;
     }
 
     //TimeOutException спустя 20сек

@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public abstract class BasePage { //не можем создавать экземпляр класс
     WebDriver driver;
     WebDriverWait wait;
 
@@ -14,4 +14,6 @@ public class BasePage {
         wait = new WebDriverWait(driver, 20);
 
     }
+    public abstract BasePage isPageOpened();
+    protected abstract BasePage openPage();
 }
