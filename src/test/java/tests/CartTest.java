@@ -12,11 +12,13 @@ public class CartTest extends BaseTest {
         //2. Добавить товар в корзину
         //3. Открыть корзину
         //4. Проверить, что товар в корзине
-        loginPage.openPage();
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .openPage()
+                .login(USERNAME, PASSWORD);
         productsPage.addProduct("Sauce Labs Bike Light");
-        cartPage.openPage();
-        cartPage.productShouldBeInTheList("Sauce Labs Bike Light");
+        cartPage
+                .openPage()
+                .productShouldBeInTheList("Sauce Labs Bike Light");
 
     }
 
@@ -27,8 +29,9 @@ public class CartTest extends BaseTest {
         //3. Открыть корзину
         //4. Найти кновку REMOVE, удалить товар
         //5. Проверить что кол-во товаров уменьшилось
-        loginPage.openPage();
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .openPage()
+                .login(USERNAME, PASSWORD);
         productsPage.addProduct("Sauce Labs Bike Light");
         productsPage.addProduct("Sauce Labs Onesie");
         productsPage.addProduct("Sauce Labs Bolt T-Shirt");
@@ -42,7 +45,6 @@ public class CartTest extends BaseTest {
     public void validateCheckoutButtonInCart() {
         cartPage.openPage();
         driver.findElement(By.cssSelector(".btn_action.checkout_button")).click();
-        //как сравнить url?Assert.assertEquals("https://www.saucedemo.com/checkout-step-one.html"...);
         Assert.assertEquals(driver.findElement(By.xpath(String.format(cartLocator, "Your"))).getText(), "Checkout: Your Information");
 
     }

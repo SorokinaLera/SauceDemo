@@ -1,11 +1,11 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class ProductsPage extends BasePage {
     String productLocator = "//*[contains(text(),'%s')]/ancestor::div[@class='inventory_item']//*[text()='ADD TO CART']";
@@ -15,34 +15,37 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
-    public void addProduct(String productName) {
-        driver.findElement(By.xpath(String.format(productLocator, productName))).click();
+    public ProductsPage openPage() {
+        driver.get("https://www.saucedemo.com/inventory.html");
+        isPageOpened();
+        return this;
     }
 
     //два способа валидации, что страница открылась
     //NoSuchElementException спустя 20 сек
     public ProductsPage isPageOpened() {
-        Assert.assertTrue(driver.findElement(SORTING_BUTTON).isDisplayed());
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SORTING_BUTTON)));
         return this;
     }
 
-    protected CartPage openPage() {
-        return null;
+    public void addProduct(String productName) {
+        driver.findElement(By.xpath(String.format(productLocator, productName))).click();
     }
 
-    //TimeOutException спустя 20сек
-    public void waitForPageLoad() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SORTING_BUTTON));
+    public ProductsPage validateSorting(){
+        driver.findElement(By.cssSelector(".product_sort_container")).click();
+        Select select = new Select(driver.findElement(SORTING_BUTTON));
+        return this;
+
     }
 
     //Второй вариант
-    public void waitForPageLoad1() {
+    public void waitForPageLoad() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(SORTING_BUTTON));
         } catch (TimeoutException ex) {
             Assert.fail("Страница продуктов не открылась");
         }
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(SORTING_BUTTON));
     }
 

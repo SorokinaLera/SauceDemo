@@ -7,11 +7,12 @@ import org.testng.Assert;
 
 public class CartPage extends BasePage {
     String cartLocator = "//*[contains(text(),'%s')]";
-    public static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn_primary.btn_inventory");
+    public static final By CHECKOUT_BUTTON = By.cssSelector(".btn_action.checkout_button");
+
 
     @Override
     public CartPage isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(ADD_TO_CART_BUTTON)));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(CHECKOUT_BUTTON)));
         return this;
     }
 

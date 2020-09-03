@@ -30,7 +30,6 @@ public class LoginPage extends BasePage {
     public ProductsPage login(String username, String password) {
         loginWithoutRedirect(username, password);
         return new ProductsPage(driver);
-
     }
 
     public LoginPage loginWithoutRedirect(String username, String password) {
@@ -38,7 +37,6 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
         return this;
-
     }
 
     public String getErrorMessage() {
