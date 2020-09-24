@@ -1,17 +1,20 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static pages.CartPage.REMOVE_BUTTON;
+
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(description = "Добавление товара в корзину")
+    @Description("Проверка, добавлен ли товар в корзину")
+    @Link("https://www.google.com/")
+    @Issue("belteanews")
+    @Attachment(value = "screenshot", type = "image/png")
     public void productShouldBeAddedIntoCart() {
-        //1. Залогиниться
-        //2. Добавить товар в корзину
-        //3. Открыть корзину
-        //4. Проверить, что товар в корзине
         loginPage
                 .openPage()
                 .login(USERNAME, PASSWORD);
@@ -24,11 +27,6 @@ public class CartTest extends BaseTest {
 
     @Test
     public void validateRemoveButtonInCart() {
-        //1. Залогиниться
-        //2. Добавить три товара в корзину
-        //3. Открыть корзину
-        //4. Найти кновку REMOVE, удалить товар
-        //5. Проверить что кол-во товаров уменьшилось
         loginPage
                 .openPage()
                 .login(USERNAME, PASSWORD);
@@ -36,7 +34,7 @@ public class CartTest extends BaseTest {
         productsPage.addProduct("Sauce Labs Onesie");
         productsPage.addProduct("Sauce Labs Bolt T-Shirt");
         cartPage.openPage();
-        driver.findElement(By.xpath("//*[contains(text(), \"REMOVE\")][1]")).click();//как переиспользовать локатор? c[1]?
+        driver.findElement(REMOVE_BUTTON).click();
         Assert.assertEquals(driver.findElements(By.xpath(String.format(cartLocator, "REMOVE"))).size(), 2);
 
     }

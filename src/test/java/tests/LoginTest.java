@@ -1,9 +1,11 @@
 package tests;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 
 public class LoginTest extends BaseTest {
 
-    @org.testng.annotations.Test(invocationCount = 1)
+    @org.testng.annotations.Test(invocationCount = 1, description = "Login Test")
+    @Description("Логинимся и будет новая страница")
     public void loginTest() {
         loginPage
                 .openPage()

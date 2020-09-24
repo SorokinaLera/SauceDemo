@@ -8,6 +8,7 @@ import org.testng.Assert;
 public class CartPage extends BasePage {
     String cartLocator = "//*[contains(text(),'%s')]";
     public static final By CHECKOUT_BUTTON = By.cssSelector(".btn_action.checkout_button");
+    public static final By REMOVE_BUTTON = By.cssSelector(".btn_secondary.cart_button");
 
 
     @Override

@@ -2,8 +2,8 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pages.CheckoutPageStepTwo;
 
 public class CheckoutTest extends BaseTest {
     public static final String firstName = "Вася";
@@ -21,6 +21,7 @@ public class CheckoutTest extends BaseTest {
 
     }
 
+    @Ignore
     @Test
     public void validateFillingCheckoutInformation1() {
         checkoutPage
@@ -29,7 +30,7 @@ public class CheckoutTest extends BaseTest {
                 .fillingInformation(firstName, lastName, zipPostalCode);
 
     }
-
+    @Ignore
     @Test
     public void validateErrorMessage() {
         checkoutPage
