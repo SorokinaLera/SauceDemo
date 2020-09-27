@@ -33,7 +33,7 @@ public class LoginTest extends BaseTest {
                 .loginWithoutRedirect("", PASSWORD)
                 .getErrorMessage();
         AllureUtils.takeScreenshot(driver);
-        Assert.assertEquals(actualMessage, "sadface: Username is required");
+        Assert.assertEquals(actualMessage, "Epic sadface: Username is required");
     }
 
     @org.testng.annotations.Test
