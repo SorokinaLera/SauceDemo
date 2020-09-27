@@ -1,6 +1,8 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 public class LoginTest extends BaseTest {
 
@@ -13,6 +15,7 @@ public class LoginTest extends BaseTest {
     }
 
     @org.testng.annotations.Test
+    @Description("Проверка сообщения об ошибке при пустом поле \"Password\"")
     public void emptyPasswordTest() {
         loginPage
                 .openPage()
@@ -22,15 +25,19 @@ public class LoginTest extends BaseTest {
     }
 
     @org.testng.annotations.Test
+    @Description("Проверка сообщения об ошибке при пустом поле \"Username\"")
+    @Attachment(value = "screenshot", type = "image/png")
     public void emptyLoginTest() {
         String actualMessage = loginPage
                 .openPage()
                 .loginWithoutRedirect("", PASSWORD)
                 .getErrorMessage();
-        Assert.assertEquals(actualMessage, "Epic sadface: Username is required");
+        AllureUtils.takeScreenshot(driver);
+        Assert.assertEquals(actualMessage, "sadface: Username is required");
     }
 
     @org.testng.annotations.Test
+    @Description("Проверка сообщения об ошибке при пустых полях \"Username\", \"Password\"")
     public void emptyPasswordLoginTest() {
         String actualMessage = loginPage
                 .openPage()

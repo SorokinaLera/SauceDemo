@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,6 +10,7 @@ import static pages.CartPage.REMOVE_BUTTON;
 public class CartTest extends BaseTest {
 
     @Test
+    @Description("Проверка добавлен ли товар в корзину")
     public void productShouldBeAddedIntoCart() {
         loginPage
                 .openPage()
@@ -21,6 +23,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка работы кнопки \"Remove\" в корзине товаров")
     public void validateRemoveButtonInCart() {
         loginPage
                 .openPage()
@@ -35,6 +38,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка работы кнопки \"Remove\" в корзине товаров")
     public void validateCheckoutButtonInCart() {
         cartPage.openPage();
         driver.findElement(By.cssSelector(".btn_action.checkout_button")).click();

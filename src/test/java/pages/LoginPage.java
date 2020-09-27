@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,22 +17,26 @@ public class LoginPage extends BasePage {
     }
 
     @Override
+    @Step("Проверка, открыта ли страница")
     public LoginPage isPageOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
         return this;
     }
 
+    @Step("Открытие страницы")
     public LoginPage openPage() {
         driver.get("https://www.saucedemo.com/index.html");
         isPageOpened();
         return this;
     }
 
+    @Step("Заполнение полей Username, Password")
     public ProductsPage login(String username, String password) {
         loginWithoutRedirect(username, password);
         return new ProductsPage(driver);
     }
 
+    @Step("Заполнение полей Username, Password")
     public LoginPage loginWithoutRedirect(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
@@ -39,6 +44,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    @Step("Сообщение об ошибке")
     public String getErrorMessage() {
         return driver.findElement(ERROR_LABEL).getText();
     }
