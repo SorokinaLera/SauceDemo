@@ -18,7 +18,6 @@ public class BaseTest {
     ProductsPage productsPage;
     CartPage cartPage;
     CheckoutPage checkoutPage;
-    CheckoutPageStepTwo checkoutPageStepTwo;
 
 
     @BeforeMethod
@@ -30,8 +29,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
-        checkoutPage = new CheckoutPage(driver);//
-        checkoutPageStepTwo = new CheckoutPageStepTwo(driver);
+        checkoutPage = new CheckoutPage(driver);
 
     }
 

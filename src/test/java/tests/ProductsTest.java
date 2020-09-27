@@ -1,5 +1,7 @@
 package tests;
+
 import org.testng.annotations.Test;
+
 public class ProductsTest extends BaseTest {
 
     @Test
@@ -10,6 +12,7 @@ public class ProductsTest extends BaseTest {
                 .sortingValidation("Name (A to Z)");
 
     }
+
     @Test
     public void checkingSortByZA() {
         productsPage

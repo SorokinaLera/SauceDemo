@@ -16,7 +16,8 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>
@@ -42,13 +43,11 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-<!--                    <suiteXmlFiles>-->
-<!--                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
-<!--                    </suiteXmlFiles>-->
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
+                    <!--                    </suiteXmlFiles>-->
                 </configuration>
             </plugin>
-
-
         </plugins>
     </build>
 
@@ -76,8 +75,6 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

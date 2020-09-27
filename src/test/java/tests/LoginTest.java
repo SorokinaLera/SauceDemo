@@ -1,11 +1,10 @@
 package tests;
-import io.qameta.allure.Description;
+
 import org.testng.Assert;
 
 public class LoginTest extends BaseTest {
 
     @org.testng.annotations.Test(invocationCount = 1, description = "Login Test")
-    @Description("Логинимся и будет новая страница")
     public void loginTest() {
         loginPage
                 .openPage()
@@ -29,7 +28,6 @@ public class LoginTest extends BaseTest {
                 .loginWithoutRedirect("", PASSWORD)
                 .getErrorMessage();
         Assert.assertEquals(actualMessage, "Epic sadface: Username is required");
-
     }
 
     @org.testng.annotations.Test
@@ -41,7 +39,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMessage, "Epic sadface: Username and password do not match any user in this service");
 
     }
-
 
 }
 

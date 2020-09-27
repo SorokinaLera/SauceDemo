@@ -26,8 +26,9 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
-    public void addProduct(String productName) {
+    public ProductsPage addProduct(String productName) {
         driver.findElement(By.xpath(String.format(productLocator, productName))).click();
+        return new ProductsPage(driver);
     }
 
     public ProductsPage sortingProductsOnThePage(String text) {
