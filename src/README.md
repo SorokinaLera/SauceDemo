@@ -24,4 +24,3 @@ mvn clean test -Dtest=LoginTest#loginTest+emptyPasswordTest test
 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
-C:\Users\Sorok\IdeaProjects\SauceDemo\src\README.md
