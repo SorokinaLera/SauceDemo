@@ -32,7 +32,6 @@ public class LoginTest extends BaseTest {
                 .openPage()
                 .loginWithoutRedirect("", PASSWORD)
                 .getErrorMessage();
-        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(actualMessage, "Epic sadface: Username is required");
     }
 
