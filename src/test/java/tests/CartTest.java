@@ -31,7 +31,7 @@ public class CartTest extends BaseTest {
                 .addProduct("Sauce Labs Bolt T-Shirt");
         cartPage.openPage()
                 .clickRemoveButton();
-        assertEquals(cartPage.getNumberOfItemsInTheCart(), 2);
+        assertEquals(cartPage.getNumberOfItemsInTheCart(), "2");
 
     }
 

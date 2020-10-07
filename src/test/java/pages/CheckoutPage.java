@@ -11,7 +11,7 @@ public class CheckoutPage extends BasePage {
     public static final By ZIP_POSTAL_CODE_INPUT = By.id("postal-code");
     public static final By CONTINUE_BUTTON = By.cssSelector(".btn_primary.cart_button");
     By errorButton = By.cssSelector("button[class='error-button']");
-    String cartLocator = "//*[contains(text(),'%s')]/ancestor::div[@class='cart_item_label']";
+    String cartLocator = "//div[contains(text(),'Checkout')]";
 
 
     public CheckoutPage(WebDriver driver) {
@@ -22,7 +22,6 @@ public class CheckoutPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(ZIP_POSTAL_CODE_INPUT)));
         return this;
     }
-
 
     public CheckoutPage openPage() {
         driver.get(URL + "/checkout-step-one.html");

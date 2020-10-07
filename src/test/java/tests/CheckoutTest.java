@@ -1,8 +1,6 @@
 package tests;
 
 import io.qameta.allure.Description;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
