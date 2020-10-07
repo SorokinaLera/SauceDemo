@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
 
     @Step("Открытие страницы")
     public LoginPage openPage() {
-        driver.get("https://www.saucedemo.com/index.html");
+        driver.get(URL + "/index.html");
         isPageOpened();
         return this;
     }

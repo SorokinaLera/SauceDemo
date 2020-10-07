@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     public static final String USERNAME = "standard_user";
     public static final String PASSWORD = "secret_sauce";
-    public static final String cartLocator = "//*[contains(text(),'%s')]";
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
@@ -48,6 +47,6 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
-        driver.close();
+        driver.quit();
     }
 }

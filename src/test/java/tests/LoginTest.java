@@ -2,11 +2,11 @@ package tests;
 
 import io.qameta.allure.*;
 import org.testng.Assert;
-import utils.AllureUtils;
+import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @org.testng.annotations.Test(invocationCount = 1, description = "Login Test")
+    @Test(description = "Login Test")
     public void loginTest() {
         loginPage
                 .openPage()
@@ -14,8 +14,8 @@ public class LoginTest extends BaseTest {
         productsPage.isPageOpened();
     }
 
-    @org.testng.annotations.Test
-    @Description("Проверка сообщения об ошибке при пустом поле \"Password\"")
+    @Test
+    @Description("Проверка сообщения об ошибке при пустом поле 'Password'")
     public void emptyPasswordTest() {
         loginPage
                 .openPage()
@@ -24,8 +24,8 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @org.testng.annotations.Test
-    @Description("Проверка сообщения об ошибке при пустом поле \"Username\"")
+    @Test
+    @Description("Проверка сообщения об ошибке при пустом поле 'Username'")
     @Attachment(value = "screenshot", type = "image/png")
     public void emptyLoginTest() {
         String actualMessage = loginPage
@@ -35,8 +35,8 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMessage, "Epic sadface: Username is required");
     }
 
-    @org.testng.annotations.Test
-    @Description("Проверка сообщения об ошибке при пустых полях \"Username\", \"Password\"")
+    @Test
+    @Description("Проверка сообщения об ошибке при пустых полях 'Username', 'Password'")
     public void emptyPasswordLoginTest() {
         String actualMessage = loginPage
                 .openPage()
