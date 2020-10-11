@@ -6,7 +6,8 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Login Test")
+    @Test
+    @Description("Проверка логирования при корректно введенных данных")
     public void loginTest() {
         loginPage
                 .openPage()
@@ -26,7 +27,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     @Description("Проверка сообщения об ошибке при пустом поле 'Username'")
-    @Attachment(value = "screenshot", type = "image/png")
     public void emptyLoginTest() {
         String actualMessage = loginPage
                 .openPage()
