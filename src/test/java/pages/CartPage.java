@@ -18,7 +18,7 @@ public class CartPage extends BasePage {
     }
 
     public CartPage openPage() {
-        driver.get("https://www.saucedemo.com/cart.html");
+        driver.get(URL + "/cart.html");
         isPageOpened();
         return this;
     }
@@ -32,4 +32,19 @@ public class CartPage extends BasePage {
 
     }
 
+    public CartPage clickRemoveButton() {
+        driver.findElement(REMOVE_BUTTON).click();
+        return new CartPage(driver);
+    }
+
+    public ProductsPage clickCheckoutButton() {
+        driver.findElement(CHECKOUT_BUTTON).click();
+        return new ProductsPage(driver);
+
+    }
+
+    public String getNumberOfItemsInTheCart() {
+        String s = driver.findElement(By.xpath(String.format("//*[@class='fa-layers-counter shopping_cart_badge']"))).getText();
+        return s;
+    }
 }

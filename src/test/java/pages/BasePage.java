@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
     WebDriver driver;
     WebDriverWait wait;
+    String URL = "https://www.saucedemo.com/";
 
 
     public BasePage(WebDriver driver) {
@@ -16,5 +17,5 @@ public abstract class BasePage {
 
     public abstract BasePage isPageOpened();
 
-    protected abstract BasePage openPage();
+    public abstract BasePage openPage();
 }

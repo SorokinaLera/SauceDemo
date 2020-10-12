@@ -1,40 +1,32 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.testng.Assert;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
     public static final String firstName = "Вася";
     public static final String lastName = "Пупкин";
     public static final String zipPostalCode = "123";
-    By errorButton = By.cssSelector("button[class='error-button']");
 
 
     @Test
+    @Description("Проверка перехода на страницу с информацией о заказе 'Checkout: Overview' при корректно заполненных полях на странице оформления заказа \"Checkout: Your Information\"")
     public void validateFillingCheckoutInformation() {
         checkoutPage
                 .openPage()
-                .fillingInformation(firstName, lastName, zipPostalCode);
-        Assert.assertEquals(driver.findElement(By.xpath(String.format(cartLocator, "Checkout"))).getText(), "Checkout: Overview");
-
-    }
-
-    @Test
-    public void validateFillingCheckoutInformation1() {
-        checkoutPage
-                .openPage()
                 .isPageOpened()
-                .fillingInformation(firstName, lastName, zipPostalCode);
+                .fillingInformation(firstName, lastName, zipPostalCode)
+                .confirmSuccessfullyCompletedInformation();
 
     }
 
     @Test
+    @Description("Проверка сообщения об ошибке при некорректно заполненных полях при оформлении заказа 'Checkout: Your Information'")
     public void validateErrorMessage() {
         checkoutPage
                 .openPage()
-                .fillingInformation("", "", zipPostalCode);
-        Assert.assertTrue(driver.findElement(errorButton).isDisplayed());
+                .fillingInformation("", "", zipPostalCode)
+                .errorWarningValidation();
 
     }
 }

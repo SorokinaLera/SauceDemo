@@ -16,7 +16,7 @@ public class ProductsPage extends BasePage {
     }
 
     public ProductsPage openPage() {
-        driver.get("https://www.saucedemo.com/inventory.html");
+        driver.get(URL + "/inventory.html");
         isPageOpened();
         return this;
     }
@@ -31,23 +31,16 @@ public class ProductsPage extends BasePage {
         return new ProductsPage(driver);
     }
 
-    public ProductsPage sortingProductsOnThePage(String text) {
+    public ProductsPage changeSorting(String text) {
         Select name = new Select(driver.findElement(SORTING_BUTTON));
         name.selectByVisibleText(text);
         return this;
     }
 
-    public ProductsPage sortingValidation(String text) {
-        if (text == "Name (A to Z)") {
-            Assert.assertEquals(driver.findElement(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).getText(), "Sauce Labs Backpack");
-        } else if (text == "Name (A to Z)") {
-            Assert.assertEquals(driver.findElement(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).getText(), "Test.allTheThings() T-Shirt (Red)");
-        } else if (text == "Price (low to high)") {
-            Assert.assertEquals(driver.findElement(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).getText(), "Sauce Labs Onesie");
-        } else if (text == "Price (high to low)") {
-            Assert.assertEquals(driver.findElement(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).getText(), "Sauce Labs Fleece Jacket");
-        }
-        return this;
+
+    public ProductsPage productShouldBeAtIndex(String text, int index) {
+        Assert.assertEquals(driver.findElements(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).get(index).getText(), text);
+        return new ProductsPage(driver);
     }
 
 }
