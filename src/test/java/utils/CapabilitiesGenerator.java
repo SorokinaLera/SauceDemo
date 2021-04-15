@@ -12,6 +12,7 @@ public class CapabilitiesGenerator {
     public static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         String driverPath = "src/test/resources/webdrivers";
+
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
             System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");

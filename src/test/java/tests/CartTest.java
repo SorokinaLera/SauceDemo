@@ -15,7 +15,6 @@ public class CartTest extends BaseTest {
                 .login(USERNAME, PASSWORD)
                 .addProduct("Sauce Labs Bike Light");
         cartPage
-                .openPage()
                 .productShouldBeInTheList("Sauce Labs Bike Light");
 
     }
@@ -28,20 +27,9 @@ public class CartTest extends BaseTest {
                 .login(USERNAME, PASSWORD);
         productsPage.addProduct("Sauce Labs Bike Light")
                 .addProduct("Sauce Labs Onesie")
-                .addProduct("Sauce Labs Bolt T-Shirt");
-        cartPage.openPage()
+                .addProduct("Sauce Labs Bolt T-Shirt")
                 .clickRemoveButton();
-        assertEquals(cartPage.getNumberOfItemsInTheCart(), "2");
+        assertEquals(productsPage.getNumberOfItemsInTheCart(), "2");
 
     }
-
-    @Test
-    @Description("Проверка работы кнопки 'Checkout' в корзине товаров")
-    public void validateCheckoutButtonInCart() {
-        cartPage.openPage()
-                .clickCheckoutButton();
-        checkoutPage.isPageOpened();
-
-    }
-
 }

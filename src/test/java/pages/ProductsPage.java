@@ -6,41 +6,45 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class ProductsPage extends BasePage {
-    String productLocator = "//*[contains(text(),'%s')]/ancestor::div[@class='inventory_item']//*[text()='ADD TO CART']";
-    public static final By SORTING_BUTTON = By.cssSelector(".product_sort_container");
-    public static final String INVENTORY_ITEM_NAME_LOCATOR = ".inventory_item_name";
-
 
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
-    public ProductsPage openPage() {
-        driver.get(URL + "/inventory.html");
-        isPageOpened();
-        return this;
-    }
-
     public ProductsPage isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SORTING_BUTTON)));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(ProductsPageLocators.SORTING_BUTTON)));
         return this;
     }
 
     public ProductsPage addProduct(String productName) {
-        driver.findElement(By.xpath(String.format(productLocator, productName))).click();
+        driver.findElement(ProductsPageLocators.productLocator(productName)).click();
         return new ProductsPage(driver);
     }
 
     public ProductsPage changeSorting(String text) {
-        Select name = new Select(driver.findElement(SORTING_BUTTON));
+        Select name = new Select(driver.findElement(ProductsPageLocators.SORTING_BUTTON));
         name.selectByVisibleText(text);
         return this;
     }
 
+    public String getNumberOfItemsInTheCart() {
+        return driver.findElement(ProductsPageLocators.SHOPPING_CART_BADGE).getText();
+    }
+
 
     public ProductsPage productShouldBeAtIndex(String text, int index) {
-        Assert.assertEquals(driver.findElements(By.cssSelector(INVENTORY_ITEM_NAME_LOCATOR)).get(index).getText(), text);
+        Assert.assertEquals(driver.findElements(ProductsPageLocators.INVENTORY_ITEM_NAME_LOCATOR).get(index).getText(), text);
         return new ProductsPage(driver);
+    }
+
+    public CartPage moveToEmptyCart(){
+        driver.findElement(By.cssSelector(".shopping_cart_link")).click();
+        return new CartPage(driver);
+    }
+
+    public CartPage clickRemoveButton() {
+        driver.findElement(CartPageLocators.REMOVE_BUTTON).click();
+        return new CartPage(driver);
     }
 
 }
